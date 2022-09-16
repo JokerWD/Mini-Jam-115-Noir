@@ -1,7 +1,11 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Noir
 {
-    [field: SerializeField] public int RoomNumber { get; set; } = 0;
+    public class Player : MonoBehaviour
+    {
+        [field: SerializeField] public int RoomNumber {private get; set; } = 0;
 
+    }
 }
+
