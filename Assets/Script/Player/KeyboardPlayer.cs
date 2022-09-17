@@ -7,17 +7,11 @@ namespace Noir
     public class KeyboardPlayer : MonoBehaviour
     {
         private Player _player;
-        private Teleport _teleport;
         public event Action<bool> OnNoir; 
 
 
         [Inject]
-        private void Construct(Player player, Teleport teleport)
-        {
-            _player = player;
-            _teleport = teleport;
-
-        }
+        private void Construct(Player player) => _player = player;
 
         private void Update()
         {

@@ -6,7 +6,7 @@ namespace Noir
 {
     public class Teleport : MonoBehaviour
     {
-        [SerializeField] private List<Vector3> _positionRoom;
+        [SerializeField] private List<Transform> _positionRoom;
 
         private Vector3 _lastPositionPlayer;
         private Player _player;
@@ -19,24 +19,18 @@ namespace Noir
             _keyboardPlayer = keyboardPlayer;
         }
 
-        private void OnEnable()
-        {
-            _keyboardPlayer.OnNoir += OnTeleportInRoom;
-        }
+        private void OnEnable() => _keyboardPlayer.OnNoir += OnTeleportInRoom;
 
-        private void OnDisable()
-        {
-            _keyboardPlayer.OnNoir -= OnTeleportInRoom;
-        }
+        private void OnDisable() => _keyboardPlayer.OnNoir -= OnTeleportInRoom;
 
 
         private void OnTeleportInRoom(bool IsNoir)
         {
+            var player = _player.gameObject;
             if (IsNoir)
             {
-                var player = _player.gameObject;
                 _lastPositionPlayer = player.transform.position;
-                player.transform.position = _positionRoom[_player.RoomNumber];
+                player.transform.position = _positionRoom[_player.RoomNumber].transform.position;
             }
             else
             {

@@ -859,8 +859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionRoom:
-  - {x: 30, y: 0, z: 20}
-  - {x: -30, y: 0, z: 20}
+  - {fileID: 2143389342}
+  - {fileID: 1492808026}
 --- !u!1 &2143389341
 GameObject:
   m_ObjectHideFlags: 0
