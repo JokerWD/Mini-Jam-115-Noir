@@ -1,7 +1,14 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+namespace Noir
 {
-    [field: SerializeField] public int RoomNumber { get; set; } = 0;
+    public class Player : MonoBehaviour
+    {
+        public bool IsNoir { get;  set; }
+        [field: SerializeField] public int CountNoir { get;  set; }
+        [field: SerializeField] public int RoomNumber {get; set; }
 
+        private void Awake() => CountNoir *= 2;
+    }
 }
+

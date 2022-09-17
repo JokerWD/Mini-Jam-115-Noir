@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 5222740939418225544}
   - component: {fileID: 2640264972213288531}
   - component: {fileID: 5269945355364510514}
+  - component: {fileID: 1890036920}
   m_Layer: 0
   m_Name: First Person Controller Minimal
   m_TagString: Untagged
@@ -402,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0438839fc7aee5c4e90023fe98de5097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CountNoir>k__BackingField: 5
   <RoomNumber>k__BackingField: 0
 --- !u!114 &5269945355364510514
 MonoBehaviour:
@@ -419,6 +421,18 @@ MonoBehaviour:
   canRun: 0
   runSpeed: 9
   runningKey: 304
+--- !u!114 &1890036920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241267463746980526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39efd4af63ea8f04aa128fd9e0e11d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5241892580736583940
 GameObject:
   m_ObjectHideFlags: 0

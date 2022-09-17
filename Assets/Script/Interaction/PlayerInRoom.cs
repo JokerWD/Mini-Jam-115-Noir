@@ -1,13 +1,17 @@
 using UnityEngine;
 
-public class PlayerInRoom : MonoBehaviour
+namespace Noir
 {
-    [SerializeField] private int _roomNumber;
-    private void OnTriggerEnter(Collider other)
+    public class PlayerInRoom : MonoBehaviour
     {
-        if (other.TryGetComponent(out Player player))
+        [SerializeField] private int _roomNumber;
+        private void OnTriggerEnter(Collider other)
         {
-            player.RoomNumber = _roomNumber;
+            if (other.TryGetComponent(out Player player))
+            {
+                player.RoomNumber = _roomNumber;
+            }
         }
     }
 }
+
