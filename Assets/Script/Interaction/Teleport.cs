@@ -32,10 +32,8 @@ namespace Noir
                 _lastPositionPlayer = player.transform.position;
                 player.transform.position = _positionRoom[_player.RoomNumber].transform.position;
             }
-            else
-            {
+            else 
                 _player.gameObject.transform.position = _lastPositionPlayer;
-            }
         }
         
         
