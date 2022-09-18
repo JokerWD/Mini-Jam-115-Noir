@@ -7,7 +7,7 @@ namespace Noir
     public class NoirActive : MonoBehaviour
     {
         [SerializeField] private PostProcessVolume _postProcess;
-        [SerializeField] private SateManager _state;
+        [SerializeField] private StateManager _state;
         [SerializeField] private GameObject _normal;
         
         private Bloom _bloom;
@@ -20,9 +20,7 @@ namespace Noir
 
         private void Awake()
         {
-            _postProcess.profile.TryGetSettings(out _bloom);
-            _postProcess.profile.TryGetSettings(out _ambientOcclusion);
-            _postProcess.profile.TryGetSettings(out _autoExposure);
+            GetSettings();
         }
 
         private void OnEnable() => _keyboardPlayer.OnNoir += OnNoir;
@@ -41,6 +39,17 @@ namespace Noir
                 _normal.gameObject.SetActive(true);
             }
 
+            SetActivePost();
+        }
+
+        private void GetSettings()
+        {
+            _postProcess.profile.TryGetSettings(out _bloom);
+            _postProcess.profile.TryGetSettings(out _ambientOcclusion);
+            _postProcess.profile.TryGetSettings(out _autoExposure);
+        }
+        private void SetActivePost()
+        {
             _bloom.active = !_bloom.active;
             _ambientOcclusion.active = !_ambientOcclusion.active;
             _autoExposure.active = !_autoExposure.active;

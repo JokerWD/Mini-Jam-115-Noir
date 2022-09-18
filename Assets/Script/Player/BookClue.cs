@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,10 @@ namespace Noir
 {
     public class BookClue : MonoBehaviour
     {
+        [SerializeField] private StateManager _stateManage;
+        private StateID _id;
+
+        [SerializeField] private List<Sprite> _spritesNorm;
         [SerializeField] private List<Image> _imageList;
         
         [Header("Mid")]
@@ -20,6 +25,29 @@ namespace Noir
         [SerializeField] private List<Sprite> _leftSprites;
         private int _countLeft;
 
+        private void Start()
+        {
+            _id = _stateManage.State[0].GetComponent<StateID>();
+            print(_id.ID);
+        }
+
+        public void Down()
+        {
+            if (_id.ID == 1)
+            {
+                if (_imageList[2].sprite == _spritesNorm[1])
+                {
+                    print("Yes");
+                }
+            }
+            else
+            {
+                if (_imageList[2].sprite == _spritesNorm[0])
+                {
+                    print("yes");
+                }
+            }
+        }
         public void ChangeLeftNext()
         {
             _countLeft++;

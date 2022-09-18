@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace Noir
 {
-    public class SateManager : MonoBehaviour
+    public class StateManager : MonoBehaviour
     {
         [field:SerializeField] public List<GameObject> State { get; private set; }
 
