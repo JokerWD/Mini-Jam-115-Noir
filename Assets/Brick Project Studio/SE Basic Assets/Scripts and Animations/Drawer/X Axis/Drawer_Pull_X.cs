@@ -15,7 +15,7 @@ namespace SojaExiles
 
 		void Start()
 		{
-			open = false;
+			//open = false;
 		}
 
 		void OnMouseOver()

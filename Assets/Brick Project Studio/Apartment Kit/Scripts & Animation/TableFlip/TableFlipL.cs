@@ -9,7 +9,7 @@ public class TableFlipL: MonoBehaviour {
 	public Transform Player;
 
 	void Start (){
-		open = false;
+		//open = false;
 	}
 
 	void OnMouseOver (){
