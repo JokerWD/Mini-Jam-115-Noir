@@ -1,17 +1,29 @@
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using Zenject;
 
 namespace Noir
 {
     public class NoirActive : MonoBehaviour
     {
+        [SerializeField] private PostProcessVolume _postProcess;
         [SerializeField] private SateManager _state;
         [SerializeField] private GameObject _normal;
         
+        private Bloom _bloom;
+        private AmbientOcclusion _ambientOcclusion;
+        private AutoExposure _autoExposure;
         private KeyboardPlayer _keyboardPlayer;
         
         [Inject]
         private void Construct(Player player, KeyboardPlayer keyboardPlayer) => _keyboardPlayer = keyboardPlayer;
+
+        private void Awake()
+        {
+            _postProcess.profile.TryGetSettings(out _bloom);
+            _postProcess.profile.TryGetSettings(out _ambientOcclusion);
+            _postProcess.profile.TryGetSettings(out _autoExposure);
+        }
 
         private void OnEnable() => _keyboardPlayer.OnNoir += OnNoir;
         private void OnDisable() => _keyboardPlayer.OnNoir -= OnNoir;
@@ -28,6 +40,10 @@ namespace Noir
                 _state.State[0].gameObject.SetActive(false);
                 _normal.gameObject.SetActive(true);
             }
+
+            _bloom.active = !_bloom.active;
+            _ambientOcclusion.active = !_ambientOcclusion.active;
+            _autoExposure.active = !_autoExposure.active;
         }
     }
 }
