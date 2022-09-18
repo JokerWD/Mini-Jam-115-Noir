@@ -9,10 +9,14 @@ namespace Noir
         [SerializeField] private PostProcessVolume _postProcess;
         [SerializeField] private StateManager _state;
         [SerializeField] private GameObject _normal;
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _noir;
+        [SerializeField] private AudioClip _normalMos;
         
         private Bloom _bloom;
         private AmbientOcclusion _ambientOcclusion;
         private AutoExposure _autoExposure;
+        private ColorGrading _colorGrading;
         private KeyboardPlayer _keyboardPlayer;
         
         [Inject]
@@ -32,14 +36,19 @@ namespace Noir
             {
                 _normal.gameObject.SetActive(false);
                 _state.State[0].gameObject.SetActive(true);
+                _audioSource.clip = _noir;
+                _audioSource.Play();
             }
             else
             {
                 _state.State[0].gameObject.SetActive(false);
                 _normal.gameObject.SetActive(true);
+                _audioSource.clip = _normalMos;
+                _audioSource.Play();
             }
 
             SetActivePost();
+            
         }
 
         private void GetSettings()
@@ -47,12 +56,14 @@ namespace Noir
             _postProcess.profile.TryGetSettings(out _bloom);
             _postProcess.profile.TryGetSettings(out _ambientOcclusion);
             _postProcess.profile.TryGetSettings(out _autoExposure);
+            _postProcess.profile.TryGetSettings(out _colorGrading);
         }
         private void SetActivePost()
         {
             _bloom.active = !_bloom.active;
             _ambientOcclusion.active = !_ambientOcclusion.active;
             _autoExposure.active = !_autoExposure.active;
+            _colorGrading.active = !_colorGrading.active;
         }
     }
 }

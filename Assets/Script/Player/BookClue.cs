@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace Noir
 {
@@ -8,6 +9,7 @@ namespace Noir
     {
         [SerializeField] private StateManager _stateManage;
         private StateID _id;
+        public bool IsWin { get; private set; }
 
         [SerializeField] private List<Sprite> _spritesNorm;
         [SerializeField] private List<Image> _imageList;
@@ -30,21 +32,96 @@ namespace Noir
             print(_id.ID);
         }
 
-        public void Down()
+        private void Load()
         {
-            if (_id.ID == 1)
+            if (IsWin)
             {
-                if (_imageList[2].sprite == _spritesNorm[1])
-                {
-                    print("Yes");
-                }
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
             else
             {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+            }
+        }
+        public void Down()
+        {
+            if (_id.ID == 0)
+            {
                 if (_imageList[2].sprite == _spritesNorm[0])
                 {
-                    print("yes");
+                    if (_imageList[1].sprite == _spritesNorm[1])
+                    {
+                        if (_imageList[0].sprite == _spritesNorm[2])
+                        {
+                            IsWin = true;
+                        }
+                        else
+                        {
+                            IsWin = false;
+                        }
+                    }
+                    else
+                    {
+                        IsWin = false;
+                    }
                 }
+                else
+                {
+                    IsWin = false;
+                }
+
+                Load();
+            }else if (_id.ID == 1)
+            {
+                if (_imageList[2].sprite == _spritesNorm[3])
+                {
+                    if (_imageList[1].sprite == _spritesNorm[4])
+                    {
+                        if (_imageList[0].sprite == _spritesNorm[5])
+                        {
+                            IsWin = true;
+                        }
+                        else
+                        {
+                            IsWin = false;
+                        }
+                    }
+                    else
+                    {
+                        IsWin = false;
+                    }
+                }
+                else
+                {
+                    IsWin = false;
+                }
+                Load();
+            }else if (_id.ID == 2)
+            {
+                if (_imageList[2].sprite == _spritesNorm[6])
+                {
+                    if (_imageList[1].sprite == _spritesNorm[7])
+                    {
+                        if (_imageList[0].sprite == _spritesNorm[8])
+                        {
+                            IsWin = true;
+                        }
+                        else
+                        {
+                            IsWin = false;
+                        }
+                    }
+                    else
+                    {
+                        IsWin = false;
+                    }
+                }
+                else
+                {
+                    IsWin = false;
+                }
+                Load();
+                
             }
         }
         public void ChangeLeftNext()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,9 +17,19 @@ namespace Noir
                 if (i != randomNumberState)
                 {
                     Destroy(State[i]);
-                    State.Remove(State[i].gameObject);
+                    State[i] = null;
+                }
+            }
+
+            for (int i = 0; i < State.Count; i++)
+            {
+                if (State[i] == null)
+                {
+                    State.Remove(State[i]);
+                    i--;
                 }
             }
         }
+  
     }
 }
